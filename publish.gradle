@@ -1,0 +1,21 @@
+buildscript {
+  repositories {
+    jcenter()
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.ajoberstar:gradle-git:1.2.0'
+  }
+}
+
+apply plugin: 'org.ajoberstar.github-pages'
+
+githubPages {
+  System.setProperty('jna.nosys', 'true')
+  repoUri = 'git@github.com:lidderupk/jbake-gradle.git'
+  pages {
+    from file('CNAME')
+    from file("$buildDir/jbake")
+  }
+}
+
